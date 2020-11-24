@@ -1,13 +1,12 @@
 import json
+import config as cf
 from tweepy import OAuthHandler, Stream, API
 from tweepy.streaming import StreamListener
 
-API_Key = 'sOJIMCij96R6fz39KVOt29q3O'
-API_Secret_Key = 'mJdBivvK4Z5iRoai1RvIiXy1gIjTdqq2Hg3Gn2CUJdU5eJmmJe'
-Bearer_Token = 'AAAAAAAAAAAAAAAAAAAAAK%2B%2FJwEAAAAAgynG73KjbqUA1GD0yoVuDw4%2Bw%2Bs%3DFmTWjqhQAcr9PSz7XMDhUX0MGMf5opVYi36NTF9v5jpkWKqran'
-Access_Token = '582946827-ppR1YRNNbl9KbtFnpOt301IUCHMz1GhANodt4Jc1'
-
-Access_Token_Secret = 'WiyEy4vMOjsS1iWKDYl9QKg8ue0TbxpR8XqEbqMIPnBNE'
+API_Key = cf.consumer_key
+API_Secret_Key = cf.consumer_secret
+Access_Token = cf.access_token
+Access_Token_Secret = cf.access_token_secret
 
 auth = OAuthHandler(API_Key, API_Secret_Key)
 auth.set_access_token(Access_Token, Access_Token_Secret)

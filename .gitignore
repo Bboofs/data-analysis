@@ -131,3 +131,6 @@ dmypy.json
 # Data files
 tweeter.sqlite3
 tweets.json
+
+# config files
+config.py

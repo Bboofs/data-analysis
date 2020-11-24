@@ -1,4 +1,5 @@
 import json
+import config as cf
 from os import path
 
 from tweepy import OAuthHandler, Stream
@@ -8,13 +9,10 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from database import session, Tweet, Hashtag, User
 
-API_Key = consumer_key = 'sOJIMCij96R6fz39KVOt29q3O'
-API_Secret_Key = consumer_secret = 'mJdBivvK4Z5iRoai1RvIiXy1gIjTdqq2Hg3Gn2CUJdU5eJmmJe'
-
-Bearer_Token = 'AAAAAAAAAAAAAAAAAAAAAK%2B%2FJwEAAAAAgynG73KjbqUA1GD0yoVuDw4%2Bw%2Bs%3DFmTWjqhQAcr9PSz7XMDhUX0MGMf5opVYi36NTF9v5jpkWKqran'
-
-Access_Token = access_token = '582946827-ppR1YRNNbl9KbtFnpOt301IUCHMz1GhANodt4Jc1'
-Access_Token_Secret = access_token_secret = 'WiyEy4vMOjsS1iWKDYl9QKg8ue0TbxpR8XqEbqMIPnBNE'
+consumer_key = cf.consumer_key
+consumer_secret = cf.consumer_secret
+access_token = cf.access_token
+access_token_secret = cf.access_token_secret
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)

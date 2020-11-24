@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Data files
+tweeter.sqlite3
+tweets.json

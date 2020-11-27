@@ -129,8 +129,8 @@ dmypy.json
 .pyre/
 
 # Data files
-tweeter.sqlite3
-tweets.json
+data/tweeter.sqlite3
+data/tweets.json
 
 # config files
 config.py

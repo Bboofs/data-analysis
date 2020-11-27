@@ -5,7 +5,7 @@ from os import path
 from tweepy import OAuthHandler, Stream
 from tweepy.streaming import StreamListener
 
-from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
 from database import session, Tweet, Hashtag, User
 
@@ -20,9 +20,9 @@ auth.set_access_token(access_token, access_token_secret)
 
 def save_tweets():
     directory = _get_dir_absolute_path()
-    filepath = path.join(directory, 'tweets.json')
+    filepath = path.join(directory, 'data/tweets.json')
 
-    listener = DatabaseListener(number_tweets_to_save=1000, filepath=filepath)
+    listener = DatabaseListener(number_tweets_to_save=10000, filepath=filepath)
 
     stream = Stream(auth, listener)
     languages = ('en',)
@@ -113,6 +113,8 @@ def save_to_database(data):
     except NoResultFound:
         user = create_user_helper(data['user'])
         session.add(user)
+    # except MultipleResultsFound:
+        # pass
 
     hashtag_results = []
     hashtags = data['entities']['hashtags']
@@ -123,6 +125,9 @@ def save_to_database(data):
         except NoResultFound:
             hashtag_obj = Hashtag(text=hashtag)
             session.add(hashtag_obj)
+        except MultipleResultsFound as e:
+            print('Hashtag ERROR:', hashtag, '\n', e)
+            continue
 
         hashtag_results.append(hashtag_obj)
 

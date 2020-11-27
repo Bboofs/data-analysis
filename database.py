@@ -4,7 +4,7 @@ from sqlalchemy import (create_engine, Column, String, Integer, Boolean, Table, 
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-database_filename = 'tweeter.sqlite3'
+database_filename = 'data/tweeter.sqlite3'
 
 directory = path.abspath(path.dirname(__file__))
 database_filepath = path.join(directory, database_filename)
